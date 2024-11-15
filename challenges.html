@@ -10,6 +10,7 @@
   >
   <script src="js/menu.js" defer></script>
   <script type="module" src="./js/apiTest.js"></script>
+  <script src="./js/modal1.js" defer></script>
 </head>
 
 <body>
@@ -77,9 +78,19 @@
               
                           <!-- Step 1: Select Date -->
                           <div class="booking-modal__step booking-modal__step--active" id="step1">
-                            <h2 class="booking-modal__title">Select a Date(Step1/Modal1)</h2>
-                            Add a Form labels, an input field for the date, and a button for searching available times (Modal 1). Decide whether to generate these elements dynamically using JavaScript or include them directly as static HTML tags. Regardless of the approach, ensure all necessary elements are properly integrated into index.html.
-                          </div>
+                              <div class="modal" id="modal1">
+                                <div class="modal__content">
+                                    <h1>Book room "Title of room" (step 1)</h1>
+                                    <form class="booking__form"> 
+                                      <label for "dates" class="booking__date">What date would you like to come?</label>
+                                      <h1>date</h1>
+                                      <input type="date" class="custom__date" id="booking-date" name="booking-date" required>
+                                      <button type="submit" class="booking__search-btn">Search available times</button>
+                                    </form>
+                                   </button>
+                                </div>
+                              </div>
+                            </div>
               
                            <!-- Step 2: Enter Details -->
                            <div class="booking-modal__step" id="step2">
@@ -89,9 +100,12 @@
               
                             <!-- Step 3: Confirmation -->
                             <div class="booking-modal__step" id="step3">
-                              <h2 class="booking-modal__title">Thank You!</h2>
-                              add a paragraph for the confirmation and a button to close the modal button
-                            </div>
+                              <div class="modal" id="modal3">
+                                <div class="modal__content">
+                                    <h1>Thank you!</h1>
+                                    <a href="index.html">Back to challenges</a>
+                                </div>
+                              </div>
                         </div>
                       </div>
                       <!-- </dialog> -->
