@@ -117,19 +117,20 @@
     margin: 50px 0 100px;
     max-width: 2000px;
     padding: 0;
-
+    
     &__title {
       position: static;
       text-align: center;
       justify-content: center;
       padding: 10px;
       font-size: 2.25rem;
-
+      
       margin: 4rem auto 4rem;
     }
   }
-
+  
   .challenges__list {
+    flex-wrap: wrap;
     display: flex;
     width: 95vw;
     padding: 1.5%;
