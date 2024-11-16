@@ -4,8 +4,8 @@
     "description": "A project to compile SCSS to CSS using node-sass or dart-sass",
     "main": "index.js",
     "scripts": {
-        "build-css": "sass styles/layouts/scss:styles/layouts/css --style compressed --source-map",
-        "watch-css": "sass --watch styles/layouts/scss:styles/layouts/css --style compressed --source-map"
+        "build-css": "sass styles/layouts/scss:styles/layouts/css --style expanded --source-map",
+        "watch-css": "sass --watch styles/layouts/scss:styles/layouts/css --style expanded --source-map"
     },
     "author": "Elena Lehto Fredenbrink",
     "license": "MIT",
