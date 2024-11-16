@@ -1,7 +1,7 @@
 @use '../../global-styles/_colors.scss' as *;
 @use '../../global-styles/_fonts.scss' as *;
 @use '../../global-styles/_screens.scss' as *;
-@import '../../global-styles/_key-frames.scss';
+@use '../../global-styles/_key-frames.scss' as *;
 
 .header {
   color: white;
