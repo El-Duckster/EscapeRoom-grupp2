@@ -11,14 +11,14 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-   @use "@/styles/global-styles/_buttons.scss" as *;
+          @use "@/styles/global-styles/_buttons.scss" as *;
           @use "@/styles/global-styles/_colors.scss" as *;
           @use "@/styles/global-styles/_fonts.scss" as *;
           @use "@/styles/global-styles/_screens.scss" as *;
         `,
       },
     },
-    devSourcemap: true, 
+    devSourcemap: true,
   },
   build: {
     sourcemap: false,
@@ -29,7 +29,7 @@ export default defineConfig({
   server: {
     host: 'localhost',
     port: 5173,
-    strictPort: true, 
+    strictPort: true,
   },
   test: {
     environment: 'jsdom',
