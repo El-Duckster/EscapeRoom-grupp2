@@ -443,3 +443,5 @@ function filterChallengesByType(type) {
     renderChallenges(filteredChallenges, challengesListElement);
 
 }
+
+export  {executeSearch, displaySearchResults};
