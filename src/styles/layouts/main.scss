@@ -2,6 +2,8 @@
 @use '../global-styles/_fonts.scss' as *;
 @use '../global-styles/_screens.scss' as *;
 @use '../global-styles/_colors.scss' as *;
+@use '../layouts/modal.scss' as *;
+@use '../layouts/header.scss' as *;
 @use 'header.scss';
 @use 'testimonials.scss';
 @use 'story.scss';

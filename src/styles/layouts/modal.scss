@@ -3,6 +3,10 @@
 @use '../global-styles/_screens.scss' as *;
 @use '../global-styles/_colors.scss' as *;
 
+.booking-modal {
+    display: none;
+}
+
 .booking-modal__step{ 
     display: block;//Initially hidden, pops up with btn
     position: fixed; //modal is in its fixed position when scrolling

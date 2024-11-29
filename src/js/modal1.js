@@ -85,10 +85,10 @@ export const openBookingModal = (id) => {
 
 // Hide the modal on page load
 document.addEventListener("DOMContentLoaded", () => {
-  modal.style.display = "none";
-  console.log("Modal is hidden when the page is loaded");
+  // modal.style.display = "none";
 
   setMinimumSelectableDate();
+  console.log("Just minimum selectable date");
 });
 
 closeBTN.forEach(button =>{
