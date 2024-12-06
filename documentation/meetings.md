@@ -1,4 +1,4 @@
-Meeting documentation:
+Meeting documentation: 
  
 11/11-2024
 We set a plan for the whole project and decided that Elena & Kirill are responsible for moment 1, Dennis & Magnus for moment 2 and Ronja & Linnea for moment 3. We agreed on using Elenas repo and to use Git lens to handle conflicts easier. 

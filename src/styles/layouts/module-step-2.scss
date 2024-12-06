@@ -1,0 +1,106 @@
+// body {
+//     margin: 0;
+//     font-family: Arial, sans-serif;
+//     box-sizing: border-box;
+//     background-color: transparent;
+// }
+
+/* container */
+.booking_modal_step_2 {
+display: none; 
+// display:flex;
+position: absolute;
+top:20%;
+left: 30%;
+  z-index: 100;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+    padding: 20px 30px;
+    background-color: rgb(234, 235, 240);
+    width: 40%;
+    height: 70%;
+    margin: 5% auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* heading */
+.booking_modal_step_2 h1 {
+    font-size: 1.5rem;
+    color: #444;
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* form */
+.user_booking {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* labels */
+.user_booking label {
+    font-size: 13px;
+    font-weight:bolder;
+    color: 333;
+    margin-bottom: 1px;
+    display: block;
+    color: #555555;
+
+
+}
+.user_booking input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: none;
+    field-sizing: content;
+    max-width: 300px;
+    border-color: #b6b6b6;
+}
+
+/* select fields */
+.user_booking select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1.15rem;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+    field-sizing: content;
+    max-width: 170px;
+    
+}
+
+/* input focus */
+.user_booking input:focus,
+.user_booking select:focus {
+    border-color: blue;
+}
+
+/* button */
+.submit_booking_btn {
+    background-color: blue;
+    color: #fff;
+    font-size: 1rem;
+    padding-left: 0px;
+    border: none;
+    border-radius: 4.5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+    padding: 10px;
+    padding-right: 20px;
+    margin-top: 100px;
+}
+
+    /* button hover */
+    .submit_booking_btn:hover {
+        background-color: darkblue;
+    }

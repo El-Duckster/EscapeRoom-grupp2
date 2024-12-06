@@ -1,1 +1,11 @@
-node_modules
+node_modules/
+dist/
+*.log
+.env
+.sass-cache/
+.vscode/
+.idea/
+.DS_Store
+styles/**/*.css
+styles/**/*.css.map
+!dist/**

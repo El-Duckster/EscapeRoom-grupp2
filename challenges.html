@@ -1,118 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenges</title>
-    <link
-    rel="stylesheet"
-    href="styles/layouts/css/main.css"
-  >
-  <script src="js/menu.js" defer></script>
-  <script type="module" src="./js/apiTest.js"></script>
-  <script type="module" src="./js/displayAllChallenges.js"></script>
+  <script type="module" src="./src/js/main.js"></script>
+<script type="module" src="./src/js/menu.js"></script>
+<script type="module" src="./src/js/apiTest.js"></script>
+<script type="module" src="./src/js/displayAllChallenges.js"></script>
+<script type="module" src="./src/js/filteringBox.js"></script>
+<script type="module" src="./src/js/modal-step-2.js"></script>
+
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__top-area">
-          <div class="header__top-area__left">
-            <div class="header__logo">
-              <img
-              class="header__logo-img"
-              src="./assets/images/logo/image4.png"
-                  loading="eager"
-                  alt="ESC logo"
-                >
-              </div>
-              <div class="header__top-area__left-title">
-                <h1 class="header__title">Hacker Escape Rooms</h1>
-              </div>
-            </div>
-            <div class="header__top-area__right">
-              <button class="nav__hamburger" aria-label="open navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            </div>
-          </div>
-          <nav class="nav">
-            <menu class="nav__menu">  
-            </menu>
-          </nav>
-          <div class="nav__background"></div>
-        </header>
+  <header class="header">
+    <div class="header__top-area">
+      <div class="header__top-area__left">
+        <div class="header__logo">
+          <img class="header__logo-img" src="./assets/images/logo/image4.png" loading="eager" alt="ESC logo">
+        </div>
+        <div class="header__top-area__left-title">
+          <h1 class="header__title">Hacker Escape Rooms</h1>
+        </div>
+      </div>
+      <div class="header__top-area__right">
+        <button class="nav__hamburger" aria-label="open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav">
+      <menu class="nav__menu">
+      </menu>
+    </nav>
+    <div class="nav__background"></div>
+  </header>
 
 
-        <!--*************************************************** Main ******************************************************-->
-     <main class="main">
+  <!--*************************************************** Main ******************************************************-->
+  <main class="main">
+
+
 
 
 
         
-        
-        <!--*************************************************** Challenges ******************************************************-->
-        <article
-        class="rooms carousel"
-        aria-label="rooms and challenges"
-        >
-        <!-- Slide container with cards  -->
-        <h1 class="rooms__title">Our challenges </h1>
-
-        <!--************ Filters ****************-->
-        
-        <section class="filter">
-          <button class="filter__button">
-            <h2 class="filter__button__title">Filter challenges</h2>
-          </button>
-        </section>
-        
-        <!--************ continue to challenge list *********-->
-        <ol class="challenges__list carousel__viewport">
-          
+       
+       
+       <article
+       class="challenges carousel"
+       aria-label="rooms and challenges"
+       >
+       <!-- Slide container with cards  -->
+       <h2 class="challenges__title">Our challenges</h2>
+       
+       <!--************ Filters ****************-->
+             <section class="filter">
+              <button class="filter__button">
+                <h2 class="filter__button__title">Filter challenges</h2>
+              </button>
+            </section>
+        <ol class="challenges__list">
         </ol>
         </article>
+        
+        <div class="main__btns">
+          <ul class="main__btns-list">
+            <li class="main__btns-item">
+              <lass="main__btns-item">
+                <a href="#onsite-challenges" class="main__btn onsite">On-site challenges</a>
+            </li>
+            <li class="main__btns-item">
+              <a href="#onsite-challenges" class="main__btn online">Online challenges</a>
+            </li>
+          </ul>
+        </div> 
 
          <!--*************************************************** Modal******************************************************-->
-                <!-- <dialog class="booking-modal">  -->
-                    <div class="booking-modal">
-                        <div class="booking-modal__content">
-              
-                          <!-- Step 1: Select Date -->
-                          <div class="booking-modal__step booking-modal__step--active" id="step1">
-                            <h2 class="booking-modal__title">Select a Date(Step1/Modal1)</h2>
-                            Add a Form labels, an input field for the date, and a button for searching available times (Modal 1). Decide whether to generate these elements dynamically using JavaScript or include them directly as static HTML tags. Regardless of the approach, ensure all necessary elements are properly integrated into index.html.
-                          </div>
-              
-                           <!-- Step 2: Enter Details -->
-                           <div class="booking-modal__step" id="step2">
-                            <h2 class="booking-modal__title">Enter Your Details (Step2/Modal2)</h2>
-                            Add a Form labels, input field for the name, email, time, participants, and a button for submitting booking. Decide whether to generate these elements dynamically using JavaScript or include them directly as static HTML tags. Regardless of the approach, ensure all necessary elements are properly integrated into index.html.
-                           </div>
-              
-                            <!-- Step 3: Confirmation -->
-                            <div class="booking-modal__step" id="step3">
-                              <h2 class="booking-modal__title">Thank You!</h2>
-                              add a paragraph for the confirmation and a button to close the modal button
-                            </div>
-                        </div>
+   
+        <!-- <dialog class="booking-modal">  -->
+          <div class="booking-modal" id="booking-modal">
+            <div class="booking-modal__content">
+  
+              <!-- Step 1: Select Date -->
+              <div class="booking-modal__step booking-modal__step--active" id="step1">
+                  <div class="modal" id="modal1">
+                    <div class="modal__content">
+                      <span class="close">&times;</span> <!--added one inline-element in all 3span moments, for minimum needs to reset default modes as with buttons-->
+                        <h1 class="modal__content-loading">'Loading Challenge information'</h1>
+                        <form class="booking__form" id="booking-form"> 
+                          <label for="booking-date" class="booking__date">What date would you like to come?</label>
+                          <p class ="booking__date-custom">date</p>
+                          <input type="date" class="custom__date" id="booking-date" name="booking-date" required>
+                          <button type="submit" class="booking__search-btn">Search available times</button>
+                        </form>
                       </div>
-                      <!-- </dialog> -->
+                    </div>
+                  </div>
+                  
+                  <!-- Step 2: Enter Details -->
+                
+             <div class="booking-modal__step" id="step2">
+              <span class="close">&times;</span>
+              <h1 class="modal__content-loading">Loading...</h1>
+              <form class="user_booking" id="user-booking"  method="post">
+                <!-- Name -->
+                <div class="user_booking_name">
+                  <label for="booking-name" class="booking_name">Name</label>
+                  <input type="name" class="custom_name" id="booking-name" name="user_name" required>
+                </div>
+                <!-- Email -->
+                <div class="user_booking_email">
+                  <label for="booking-email" class="booking_email">E-mail</label>
+                  <input type="email" class="custom_email" id="booking-email" name="user_email" required>
+                </div>
+                <!-- Times -->
+                <div class="user_booking_time">
+                  <label for="booking-time" class="booking_time">What time?</label>
+                  <select id="booking-time" name="selected_time" class="custom_time" required>
+                    <!-- placeholder times -->
+                    <option value="">Select Time</option>
+                  </select>
+                </div>
+                <!-- participants -->
+                <div class="user_booking_participants">
+                  <label for="booking-participants" class="booking_participants">How many participants?</label>
+                  <select id="booking-participants" name="selected_participants" class="custom_participants" required>
+                    <!-- placeholder participants -->
+                    <option value=""> Select Participants</option>
+                  </select>
+                </div>
+                <!-- submit booking button -->
+                <button type="submit" class="submit_booking_btn">submit booking</button>
+              </form>
+            </div>
+                 
 
-              <!--*************************************************** FOOTER ******************************************************-->
-      <footer class="footer">
-        <div class="footer__content">
-          <section class="footer__about item1">
-            <h2 class="footer__title">[Esc] Hacker Escape Rooms</h1>
+              <!-- Step 3: Confirmation -->
+              <div class="booking-modal__step" id="step3">
+                <div class="modal" id="modal3">
+                  <div class="modal__content">
+                    <span class="close">&times;</span>
+                      <h1>Thank you!</h1>
+                      <a href="index.html">Back to challenges</a>
+                  </div>
+                </div>
+          </div>
+        </div>
+        </div>
+    <!-- </dialog> -->
+
+    <!--*************************************************** FOOTER ******************************************************-->
+    <footer class="footer">
+      <div class="footer__content">
+        <section class="footer__about item1">
+          <h2 class="footer__title">[Esc] Hacker Escape Rooms</h1>
             <p class="footer__text">
               Quodsi haberent magnalia inter potentiam et divitias, et non illam
               quidem haec eo spectant haec quoque vos omnino desit illud quo
               solo felicitatis libertatisque perficiuntur.
             </p>
-          </section>
-          <section class="footer__site-map item2">
-            <h2 class="footer__item big">Site map</li>
+        </section>
+        <section class="footer__site-map item2">
+          <h2 class="footer__item big">Site map</li>
             <ul class="footer__list">
               <li class="footer__item">The Story</li>
               <li class="footer__item">Contact Us</li>
@@ -122,20 +176,21 @@
               <li class="footer__item">Play online</li>
               <li class="footer__item">Play on-site</li>
             </ul>
-          </section>
-            
-          </section>
-          <section class="footer__social item3">
-            <h2 class="footer__item big">Follow us on</h2>
-            <ul class="footer__list">
-              <li class="footer__item">Facebook</li>
-              <li class="footer__item">Twitter</li>
-              <li class="footer__item">Instagram</li>
-            </ul>
-          </section>
-        </div>
-      </footer>
-    </main>
-    
+        </section>
+
+        </section>
+        <section class="footer__social item3">
+          <h2 class="footer__item big">Follow us on</h2>
+          <ul class="footer__list">
+            <li class="footer__item">Facebook</li>
+            <li class="footer__item">Twitter</li>
+            <li class="footer__item">Instagram</li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  </main>
+
 </body>
+
 </html>

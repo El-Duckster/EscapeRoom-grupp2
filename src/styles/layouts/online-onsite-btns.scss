@@ -1,0 +1,82 @@
+@use "@/styles/global-styles/_buttons.scss" as *;
+@use '@/styles/global-styles/_fonts.scss' as *;
+@use '@/styles/global-styles/_screens.scss' as *;
+@use '@/styles/global-styles/_colors.scss' as *;
+
+.main__btns{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    margin: auto;
+    padding: 2.5rem 0;//10px 
+    
+    &-list{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; //480
+        margin: auto;    
+         
+        .main__btns-item{
+            max-width: 400px;
+            min-width: 308;
+          
+            .main__btn{
+
+                padding: 0 2.5rem ;//10px 
+                @include font-bold(1.75rem) ;//28px
+                color:$color-navy;
+                border-radius: 0.3rem;
+              
+                
+
+                &.onsite{
+                    @include button-secondary();
+                }
+                &.online{
+                    @include button-styles(transparent, $color-blue, $font-size: 1rem);
+                    text-decoration: underline;
+                    &:hover{
+                        color: $color-navy;
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+@include large-screen{
+    .main__btns{
+        max-width: 2000px;
+        display: flex;
+        transform: translateY(-50%); //468px
+        margin: 0;
+        
+        .main__btns-list{
+            display: flex;
+            flex-direction: row-reverse;
+            width:55%;
+            .main__btns-item{
+                flex:1;
+                min-width: 280px;
+                .main__btn{
+                    padding: 1rem 2rem;
+                    &.online{
+                        @include button-primary();//24;
+                        min-width:100%;
+                        text-decoration: none;
+                        
+                    }
+                    &.onsite{
+                    padding: 1.5rem 0;
+                    margin-left: 15px;
+                    min-width: 100%;
+                }
+            }
+        }
+    }
+  }
+
+}

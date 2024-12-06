@@ -1,0 +1,171 @@
+@use "@/styles/global-styles/_buttons.scss" as *;
+@use '@/styles/global-styles/_fonts.scss' as *;
+@use '@/styles/global-styles/_screens.scss' as *;
+@use '@/styles/global-styles/_colors.scss' as *;
+
+
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+    &__box {
+        width: 84.5%;
+        height: 25rem;
+        border: 2px solid $color-light-blue;
+        border-radius: 2px; 
+        
+        &__topDiv {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+            &__closeFilterBtn {
+                background-color: transparent;
+                border: none;
+                font-size: 2.5rem;
+                color: grey;
+                padding-top: 1.5rem;
+                padding-right: 1.5rem;
+                
+                &:hover {
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+            
+            &__title {
+                @include font-style;
+                font-size: 2rem;
+                padding-left: 2rem;
+                padding-top: 1.5rem;
+            }
+        }
+
+        &__centerDiv {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            &__checkDiv {
+                padding-left: 2rem;
+                padding-top: 3.5rem;
+
+                &__title {
+                    @include font-bold;
+                    font-size: 1.3rem;
+                    padding-bottom: 0.5rem;
+                }
+
+                label {
+                    @include font-style;
+                    font-size: 1.3rem;
+                    margin-left: 0.5rem;
+                }
+            }
+    
+            &__dynamicDivMain {
+                padding-right: 2rem;
+                padding-top: 3.5rem;
+                max-width: 20rem;
+                height: 10rem;
+
+                &__dynamicDivTitle {
+                    @include font-bold;
+                    font-size: 1.3rem;
+                    padding-bottom: 0.5rem;
+                }
+    
+                &__dynamicTag {
+                    @include font-style;
+                    border-radius: 1rem;
+                    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+                    background-color: transparent;
+                    border: 0.1rem solid rgb(120, 136, 150);
+                    color: rgb(120, 136, 150);
+                    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    
+                    &:hover {
+                        background-color: rgb(120, 136, 150);
+                        color: white;
+                    }
+    
+                    &.active-tag {
+                        background-color: rgb(120, 136, 150);
+                        color: white;
+                    }
+                }
+            }
+
+            &__ratingDiv {
+                padding-top: 3.5rem;
+
+                &__title {
+                    @include font-bold;
+                    font-size: 1.3rem;
+                    padding-bottom: 0.5rem;
+                }
+
+                &__starDiv {
+                    display: flex;
+
+                    &__text {
+                        @include font-style;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        font-size: 1.2rem;
+                    }
+                }
+
+                &__star {
+                    height: 28px;
+                    width: 25px;
+                }
+            }
+        }
+
+        &__searchDivMain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3rem;
+
+            &__title {
+                @include font-bold;
+                font-size: 1.3rem;
+                padding-bottom: 0.5rem
+            }
+
+            &__searchfield {
+                @include font-style;
+                font-size: 1rem;
+                width: 19.5rem;
+                height: 2.8rem;
+                border: 1.5px solid rgba(34,36,41, 0.5);
+                border-radius: 2px;
+                padding-left: 0.5rem;
+
+                &:focus {
+                    outline: 1px solid rgba(34,36,41, 1);
+                }
+            }
+        }
+    }
+
+    &__button {
+        @include button-outlined;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &__title {
+            @include font-style;
+            padding: 0.5rem;
+            font-size: 1.75rem;
+        }
+    }
+
+    &__hidden {
+        display: none;
+    }
+}

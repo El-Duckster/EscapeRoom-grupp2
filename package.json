@@ -2,15 +2,26 @@
     "name": "scss-project",
     "version": "1.0.0",
     "description": "A project to compile SCSS to CSS using node-sass or dart-sass",
+    "type": "module",
     "main": "index.js",
     "scripts": {
-        "build-css": "sass styles/layouts/scss:styles/layouts/css --style compressed --source-map",
-        "watch-css": "sass --watch styles/layouts/scss:styles/layouts/css --style compressed --source-map"
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+        "deploy": "gh-pages -d dist"
     },
     "author": "Elena Lehto Fredenbrink",
     "license": "MIT",
     "devDependencies": {
-        "sass": "^1.80.6"
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
+        "babel-jest": "^29.7.0",
+        "gh-pages": "^6.2.0",
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0",
+        "sass": "^1.81.0",
+        "vite": "^5.4.11"
     },
     "keywords": []
 }

@@ -1,0 +1,56 @@
+@use "@/styles/global-styles/_buttons.scss" as *;
+@use '@/styles/global-styles/_fonts.scss' as *;
+@use '@/styles/global-styles/_screens.scss' as *;
+@use '@/styles/global-styles/_colors.scss' as *;
+
+.story {
+  display: flex;
+  width: 100%;
+  max-width: 2000px;
+  height: auto;
+  min-height: 500px;
+  background-color: $color-navy;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin-top: 40px;
+
+  &__container {
+    width: 90%;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 439px;
+    
+    .story__intro {
+      color: white;
+      @include font-style($size: 1.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .story__btn {
+      @include button-styles(transparent, $color-light-blue);
+      @include font-bold(1.5rem);
+      border: 2px solid $color-light-blue;
+      
+      &:hover {
+        background-color: $color-light-blue;
+        color: $color-navy;
+      }
+    }
+  }
+
+  /* Larger screens */
+  @include large-screen {
+    .story__container {
+      max-width: 632px;
+      .story__intro {
+        @include font-style($size: 1.75rem);
+        line-height: 2rem;
+      }
+      .story__btn {
+        width: 308px;
+      }
+    }
+  }
+}
