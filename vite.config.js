@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
-  base: '/EscapeRoom-grupp2/',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Alias for src directory
@@ -25,9 +25,15 @@ export default defineConfig({
   build: {
     sourcemap: true,
     rollupOptions: {
+
         input: {
-            main:  'index.html',
-            challenges: 'challenges.html',
+          main: path.resolve(__dirname, 'index.html'), 
+          challenges: path.resolve(__dirname, 'challenges.html'), 
+        },
+        output: {
+          entryFileNames: 'assets/js/[name].bundle.js', 
+          chunkFileNames: 'assets/js/[name].[hash].js', 
+          assetFileNames: 'assets/[name].[ext]', 
         },
     }
   },
