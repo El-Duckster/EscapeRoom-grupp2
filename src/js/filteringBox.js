@@ -362,14 +362,17 @@ function getUniqueTags(filteredResults) {
 
 // Delayed search from input event
 function debounceSearch(event) {
-    clearTimeout(searchDebounceTimer);
-    searchDebounceTimer = setTimeout(() => 
-        executeSearch(event.target.value), searchDebounceDelay);
 
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+        searchField = event.target;
+        executeSearch(event.target.value)}, searchDebounceDelay);
+    
 }
 
 //Perform search on challenges array from case-insensitive userinput 
 function executeSearch(query) {
+
     const challengesArray = getChallengesArray();
     console.log("All challenges:", challengesArray); 
     const onlineChecked = document.getElementById("DOM__checkBox1").checked;
@@ -378,6 +381,7 @@ function executeSearch(query) {
         const matchesRating = challenge.rating >= ratingStars["lowestRating"] && challenge.rating <= ratingStars["highestRating"];
         
         const matchesQuery =
+            query.length < 3 ||
             challenge.title.toLowerCase().includes(query.toLowerCase()) || 
             challenge.description.toLowerCase().includes(query.toLowerCase()) ||
             challenge.labels.some(label =>
