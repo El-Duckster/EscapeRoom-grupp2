@@ -1,0 +1,7 @@
+import 'menu.js'
+import 'main.js'
+import 'apiTest.js'
+import 'displayAllChallenges.js'
+import 'filteringBox.js'
+import 'modal1.js'
+import 'modal-step-2.js'
