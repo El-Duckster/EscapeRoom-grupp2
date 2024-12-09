@@ -25,6 +25,8 @@ let ratingStars = {
     highestRating: 5,
 }
 
+let sortVal;
+
 // Sorting query
 const sortSelection = document.querySelector(".sorting-selection");
 sortSelection.addEventListener("change", (e) => executeSearch(searchField ? searchField.value : "", e), false);
@@ -400,10 +402,8 @@ function executeSearch(query, sortAttribute) {
         return matchesQuery && matchesType && matchesTag && matchesRating;
     });
 
-    let sortVal
-
     if (sortAttribute) {
-        sortVal = sortAttribute
+      sortVal = sortAttribute
     }
 
     if (sortVal) {
