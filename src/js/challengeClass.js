@@ -1,6 +1,5 @@
 import'../styles/layouts/rooms.scss';
 import {openBookingModal} from './modal1.js'
-import {truncateText} from './utilities/truncateText.js';
 
 import starFilled from '../../assets/svg/star-filled.svg';
 import starHalf from '../../assets/svg/star-half.svg';
@@ -109,7 +108,7 @@ class Challenge {
     
     const challengeDescription = document.createElement("p");
     challengeDescription.className = "challenge__description"
-    challengeDescription.textContent = truncateText(this.description, 50);
+    challengeDescription.textContent = this.description;
     
     detailsContainer.appendChild(title);
 

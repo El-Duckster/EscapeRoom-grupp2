@@ -20,10 +20,16 @@ let activeButtons = [];
 let ratingStars = {
     lowestStars: [],
     lowestRating: 0,
-
+    
     highestStars: [],
     highestRating: 5,
 }
+
+let sortVal;
+
+// Sorting query
+const sortSelection = document.querySelector(".sorting-selection");
+sortSelection.addEventListener("change", (e) => executeSearch(searchField ? searchField.value : "", e), false);
 
 function openFilterModal() {
     const filterSection = document.querySelector(".filter");
@@ -371,12 +377,11 @@ function debounceSearch(event) {
 }
 
 //Perform search on challenges array from case-insensitive userinput 
-function executeSearch(query) {
-
+function executeSearch(query, sortAttribute) {
     const challengesArray = getChallengesArray();
     console.log("All challenges:", challengesArray); 
-    const onlineChecked = document.getElementById("DOM__checkBox1").checked;
-    const onsiteChecked = document.getElementById("DOM__checkBox2").checked;
+    const onlineChecked = document.getElementById("DOM__checkBox1") ? document.getElementById("DOM__checkBox1").checked : true;
+    const onsiteChecked = document.getElementById("DOM__checkBox2") ? document.getElementById("DOM__checkBox2").checked : true;
     const filteredResults = challengesArray.filter(challenge => {
         const matchesRating = challenge.rating >= ratingStars["lowestRating"] && challenge.rating <= ratingStars["highestRating"];
         
@@ -385,21 +390,41 @@ function executeSearch(query) {
             challenge.title.toLowerCase().includes(query.toLowerCase()) || 
             challenge.description.toLowerCase().includes(query.toLowerCase()) ||
             challenge.labels.some(label =>
-                label.toLowerCase().includes(query.toLowerCase()));
+                label.toLowerCase().includes(query.toLowerCase())
+            );
 
         const matchesType = 
             (onlineChecked && challenge.type.toLowerCase() === "online") ||
             (onsiteChecked && challenge.type.toLowerCase() === "onsite");
-        const matchesTag =  
-            activeTags.every(tag => challenge.labels.some(label => label.toLowerCase() === tag.toLowerCase()));
-                return matchesQuery && matchesType && matchesTag && matchesRating;
 
-            });
+        const matchesTag = activeTags.every(tag => challenge.labels.some(label => label.toLowerCase() === tag.toLowerCase()));
+       
+        return matchesQuery && matchesType && matchesTag && matchesRating;
+    });
 
-            // updateDynamicTags(filteredResults);
+    if (sortAttribute) {
+      sortVal = sortAttribute
+    }
 
-            displaySearchResults(filteredResults);
+    if (sortVal) {
+        filteredResults.sort((a, b) => {
+            switch (sortVal.target.value) {
+                case "name":
+                    return a.title.localeCompare(b.title); 
+                case "name-reverse":
+                    return b.title.localeCompare(a.title); 
+                case "rating-lowest":
+                    return a.rating - b.rating;
+                case "rating-highest":
+                    return b.rating - a.rating;
+                default:
+                    break
+            }
+        });
+    }
 
+    // updateDynamicTags(filteredResults);
+    displaySearchResults(filteredResults);
 }
  
 // Prints filteredResults in DOM-element

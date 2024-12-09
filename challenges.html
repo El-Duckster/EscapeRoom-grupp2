@@ -54,6 +54,23 @@
             <h2 class="filter__button__title">Filter challenges</h2>
           </button>
         </section>
+
+        <!--*****************Sorting******************-->
+        <select class="sorting-selection">
+          <option value="" disabled selected style="display: none">
+            Sort by
+          </option>
+          <optgroup label="Sort by name">
+            <option value="name">Name (A-Z)</option>
+            <option value="name-reverse">Name (Z-A)</option>
+          </optgroup>
+
+          <optgroup label="Sort by rating">
+            <option value="rating-highest">Highest first</option>
+            <option value="rating-lowest">Lowest first</option>
+          </optgroup>
+        </select>
+
         <ol class="challenges__list"></ol>
       </article>
 
@@ -211,7 +228,6 @@
               <li class="footer__item">Play on-site</li>
             </ul>
           </section>
-
           <section class="footer__social item3">
             <h2 class="footer__item big">Follow us on</h2>
             <ul class="footer__list">
