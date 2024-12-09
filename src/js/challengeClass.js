@@ -44,9 +44,11 @@ class Challenge {
       } else if (i === Math.ceil(rate) && rate % 1 !== 0) {
         star.src = starHalf; 
         star.className = "star half";
-      } else {
+      } else if (rate === 0){
         star.src = starEmpty;
         star.className = "star unfilled";
+        challengeRating.appendChild(star);
+        return challengeRating;
       }
 
       challengeRating.appendChild(star);
