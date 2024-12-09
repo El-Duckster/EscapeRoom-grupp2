@@ -59,11 +59,26 @@
        <h2 class="challenges__title">Our challenges</h2>
        
        <!--************ Filters ****************-->
-             <section class="filter">
-              <button class="filter__button">
-                <h2 class="filter__button__title">Filter challenges</h2>
-              </button>
-            </section>
+        <section class="filter">
+          <button class="filter__button">
+            <h2 class="filter__button__title">Filter challenges</h2>
+          </button>
+        </section>
+        
+        <!--*****************Sorting******************-->
+        <select class="sorting-selection">
+          <option value="" disabled selected style="display: none;">Sort by</option>
+          <optgroup label="Sort by name">
+            <option value="name">Name (A-Ö)</option>
+            <option value="name-reverse">Name (Ö-A)</option>
+          </optgroup>
+
+          <optgroup label="Sort by rating">
+            <option value="rating-highest">Highest first</option>
+            <option value="rating-lowest">Lowest first</option>
+          </optgroup>
+        </select>
+      
         <ol class="challenges__list">
         </ol>
         </article>
