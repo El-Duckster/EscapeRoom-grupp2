@@ -169,3 +169,17 @@
         display: none;
     }
 }
+
+.sorting-selection {
+    @include font-style;
+    height: 40px;
+    width: 13rem;
+    margin-left: 2.5rem;
+    border: 2px solid $color-light-blue;
+    border-radius: 0.2rem;
+
+    &:focus {
+        border: 2px solid $color-light-blue;
+        outline: none;
+    }
+}
