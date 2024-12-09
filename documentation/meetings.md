@@ -65,3 +65,17 @@ Today we set our rules and principle considering our teamwork in this part of th
 * 2 reviewers has to approve for merge to go through to the main-branch.  
 * Every team member is expected to participate in the meetings that are scedueled with our mentor. 
 *********************************************
+
+9/12-2024
+Today we decided to use the formatting extension: "prettier". 
+We agreed on reviewing pull requests continously without waiting for pending reviews by team-members that are behind schedule. 
+We also decided to make the PR´s rich with context using screenshots and PR templates. (Changes, Changes made, next steps mm)
+To make our commits unified we will use conventional commits like: 
+feat -- ny feature
+fix -- bug
+chore -- mindre ändringar i en fil
+We have agreed to run our project through Lighthouse to see performance status. We regret doing so. 
+Jokes aside, we are in phase and learning alot from each other.
+
+
+
