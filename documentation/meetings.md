@@ -31,7 +31,6 @@ We had a check up meeting to see where we`re at and how everything is going.
 We are making the final adjustments before our merge into main. 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PROJECT part 2:
-
 5/12-2024
 Our team have agreed on taking notes in board notes and docs on trello.
 We have decided to create our own branches, cards and then connect them to our remote repo at GitHub. 
@@ -76,6 +75,10 @@ fix -- bug
 chore -- mindre ändringar i en fil
 We have agreed to run our project through Lighthouse to see performance status. We regret doing so. 
 Jokes aside, we are in phase and learning alot from each other.
+
+10/12-2024
+Today we discussed testing. 
+We have used some unit testing in our project.
 
 
 
