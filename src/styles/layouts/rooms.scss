@@ -209,3 +209,25 @@
     margin: 0;
   }
 }
+
+/*For screens smaller than 1000px*/
+@media (max-width: 1000px) {
+  .challenges__title {
+    font-size: 1.5rem; 
+    padding: 0 10px;  
+    position: relative; 
+    top: auto;         
+    text-align: center; 
+  }
+}
+
+/*For screens smaller than 1800px*/
+@media (max-width: 1800px) {
+  .challenges__title {
+    font-size: 2.5rem; 
+    padding: 0 10px;  
+    position: relative; 
+    top: auto;         
+    text-align: center; 
+  }
+}
