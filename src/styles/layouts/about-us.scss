@@ -1,0 +1,34 @@
+@use "../global-styles/_buttons.scss" as *;
+@use '../global-styles/_fonts.scss' as *;
+@use '../global-styles/_screens.scss' as *;
+@use '../global-styles/_colors.scss' as *;
+
+.about {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.about__title {
+    margin: 0 0 1rem 0rem;
+    text-align: center;
+    @include font-style(normal, normal, 3rem);
+}
+
+.about__text {
+    @include font-italic(1.4rem);
+}
+
+.about__image {
+    width: 50rem;
+    height: 25rem;
+}
+
+.about_link {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
