@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Challenges</title>
-    <script type="module" crossorigin src="/EscapeRoom-grupp2/assets/challenges-B9kRIAO-.js"></script>
-    <link rel="modulepreload" crossorigin href="/EscapeRoom-grupp2/assets/renderChallenges-CUcOMGN9.js">
-    <link rel="stylesheet" crossorigin href="/EscapeRoom-grupp2/assets/renderChallenges-DBCUDqpm.css">
-    <link rel="stylesheet" crossorigin href="/EscapeRoom-grupp2/assets/challenges-CE74nBc5.css">
+    <script type="module" crossorigin src="/EscapeRoom-grupp2/assets/challenges-DPAjXrwF.js"></script>
+    <link rel="modulepreload" crossorigin href="/EscapeRoom-grupp2/assets/renderChallenges-CJvSvMpk.js">
+    <link rel="stylesheet" crossorigin href="/EscapeRoom-grupp2/assets/renderChallenges-BdH_3bAs.css">
+    <link rel="stylesheet" crossorigin href="/EscapeRoom-grupp2/assets/challenges-Brdbiv-B.css">
   </head>
 
   <body>
@@ -52,6 +52,22 @@
             <h2 class="filter__button__title">Filter challenges</h2>
           </button>
         </section>
+        
+        <select class="sorting-selection">
+          <option value="" disabled selected style="display: none">
+            Sort by
+          </option>
+          <optgroup label="Sort by name">
+            <option value="name">Name (A-Z)</option>
+            <option value="name-reverse">Name (Z-A)</option>
+          </optgroup>
+  
+          <optgroup label="Sort by rating">
+            <option value="rating-highest">Highest first</option>
+            <option value="rating-lowest">Lowest first</option>
+          </optgroup>
+        </select>
+
         <ol class="challenges__list"></ol>
       </article>
 
