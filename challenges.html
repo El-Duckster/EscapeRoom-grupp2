@@ -1,244 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Challenges</title>
-    <script type="module" src="./src/js/main.js"></script>
-    <script type="module" src="./src/js/menu.js"></script>
-    <script type="module" src="./src/js/apiTest.js"></script>
-    <script type="module" src="./src/js/displayAllChallenges.js"></script>
-    <script type="module" src="./src/js/filteringBox.js"></script>
-    <script type="module" src="./src/js/modal-step-2.js"></script>
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="header__top-area">
-        <div class="header__top-area__left">
-          <div class="header__logo">
-            <img
-              class="header__logo-img"
-              src="./assets/images/logo/image4.png"
-              loading="eager"
-              alt="ESC logo"
-            />
-          </div>
-          <div class="header__top-area__left-title">
-            <h1 class="header__title">Hacker Escape Rooms</h1>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenges</title>
+  <script type="module" src="./src/js/main.js"></script>
+  <script type="module" src="./src/js/menu.js"></script>
+  <script type="module" src="./src/js/apiTest.js"></script>
+  <script type="module" src="./src/js/displayAllChallenges.js"></script>
+  <script type="module" src="./src/js/filteringBox.js"></script>
+  <script type="module" src="./src/js/modal-step-2.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__top-area">
+      <div class="header__top-area__left">
+        <div class="header__logo">
+          <img class="header__logo-img" src="./assets/images/logo/image4.png" loading="eager" alt="ESC logo" />
         </div>
-        <div class="header__top-area__right">
-          <button class="nav__hamburger" aria-label="open navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+        <div class="header__top-area__left-title">
+          <h1 class="header__title">Hacker Escape Rooms</h1>
         </div>
       </div>
-      <nav class="nav">
-        <menu class="nav__menu"> </menu>
-      </nav>
-      <div class="nav__background"></div>
-    </header>
+      <div class="header__top-area__right">
+        <button class="nav__hamburger" aria-label="open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav">
+      <menu class="nav__menu"> </menu>
+    </nav>
+    <div class="nav__background"></div>
+  </header>
 
-    <!--*************************************************** Main ******************************************************-->
-    <main class="main">
-      <article class="challenges carousel" aria-label="rooms and challenges">
-        <!-- Slide container with cards  -->
-        <h2 class="challenges__title">Our challenges</h2>
+  <!--*************************************************** Main ******************************************************-->
+  <main class="main">
+    <article class="challenges carousel" aria-label="rooms and challenges">
+      <!-- Slide container with cards  -->
+      <h2 class="challenges__title">Our challenges</h2>
 
-        <!--************ Filters ****************-->
-        <section class="filter">
-          <button class="filter__button">
-            <h2 class="filter__button__title">Filter challenges</h2>
-          </button>
+      <!--************ Filters ****************-->
+      <section class="filter">
+        <button class="filter__button">
+          <h2 class="filter__button__title">Filter challenges</h2>
+        </button>
+      </section>
+
+      <select class="sorting-selection">
+        <option value="" disabled selected style="display: none">
+          Sort by
+        </option>
+        <optgroup label="Sort by name">
+          <option value="name">Name (A-Z)</option>
+          <option value="name-reverse">Name (Z-A)</option>
+        </optgroup>
+
+        <optgroup label="Sort by rating">
+          <option value="rating-highest">Highest first</option>
+          <option value="rating-lowest">Lowest first</option>
+        </optgroup>
+      </select>
+
+      <ol class="challenges__list"></ol>
+    </article>
+
+    <div class="main__btns">
+      <ul class="main__btns-list">
+        <li class="main__btns-item">
+          <a href="#onsite-challenges" class="main__btn onsite">On-site challenges</a>
+        </li>
+        <li class="main__btns-item">
+          <a href="#onsite-challenges" class="main__btn online">Online challenges</a>
+        </li>
+      </ul>
+    </div>
+
+    <!--*************************************************** Modal******************************************************-->
+
+    <!-- <dialog class="booking-modal">  -->
+    <div class="booking-modal" id="booking-modal">
+      <div class="booking-modal__content">
+        <!-- Step 1: Select Date -->
+        <div class="booking-modal__step booking-modal__step--active" id="step1">
+          <div class="modal" id="modal1">
+            <div class="modal__content">
+              <span class="close">&times;</span>
+              <!--added one inline-element in all 3span moments, for minimum needs to reset default modes as with buttons-->
+              <h1 class="modal__content-loading">
+                'Loading Challenge information'
+              </h1>
+              <form class="booking__form" id="booking-form">
+                <label for="booking-date" class="booking__date">What date would you like to come?</label>
+                <p class="booking__date-custom">date</p>
+                <input type="date" class="custom__date" id="booking-date" name="booking-date" required />
+                <button type="submit" class="booking__search-btn">
+                  Search available times
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Enter Details -->
+
+        <div class="booking-modal__step" id="step2">
+          <span class="close">&times;</span>
+          <h1 class="modal__content-loading">Loading...</h1>
+          <form class="user_booking" id="user-booking" method="post">
+            <!-- Name -->
+            <div class="user_booking_name">
+              <label for="booking-name" class="booking_name">Name</label>
+              <input type="name" class="custom_name" id="booking-name" name="user_name" required />
+            </div>
+            <!-- Email -->
+            <div class="user_booking_email">
+              <label for="booking-email" class="booking_email">E-mail</label>
+              <input type="email" class="custom_email" id="booking-email" name="user_email" required />
+
+              <!-- phone -->
+              <div class="user_booking_phone">
+                <label for="booking-phone" class="booking_phone">Phone</label>
+                <input type="phone" class="custom_phone" id="booking-phone" name="user_phone" required />
+
+                <!-- Times -->
+                <div class="user_booking_time">
+                  <label for="booking-time" class="booking_time">What time?</label>
+                  <select id="booking-time" name="selected_time" class="custom_time" required>
+                    <!-- placeholder times -->
+                    <option value="">Select Time</option>
+                  </select>
+                </div>
+                <!-- participants -->
+                <div class="user_booking_participants">
+                  <label for="booking-participants" class="booking_participants">How many participants?</label>
+                  <select id="booking-participants" name="selected_participants" class="custom_participants" required>
+                    <!-- placeholder participants -->
+                    <option value="">Select Participants</option>
+                  </select>
+                </div>
+                <!-- submit booking button -->
+                <button type="submit" class="submit_booking_btn">
+                  submit booking
+                </button>
+          </form>
+        </div>
+
+        <!-- Step 3: Confirmation -->
+        <div class="booking-modal__step" id="step3">
+          <div class="modal" id="modal3">
+            <div class="modal__content">
+              <span class="close">&times;</span>
+              <h1>Thank you!</h1>
+              <a href="index.html">Back to challenges</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </dialog> -->
+
+    <!--*************************************************** FOOTER ******************************************************-->
+    <footer class="footer">
+      <div class="footer__content">
+        <section class="footer__about item1">
+          <h2 class="footer__title">[Esc] Hacker Escape Rooms</h2>
+          <p class="footer__text">
+            Quodsi haberent magnalia inter potentiam et divitias, et non illam
+            quidem haec eo spectant haec quoque vos omnino desit illud quo
+            solo felicitatis libertatisque perficiuntur.
+          </p>
         </section>
-        
-        <select class="sorting-selection">
-          <option value="" disabled selected style="display: none">
-            Sort by
-          </option>
-          <optgroup label="Sort by name">
-            <option value="name">Name (A-Z)</option>
-            <option value="name-reverse">Name (Z-A)</option>
-          </optgroup>
-  
-          <optgroup label="Sort by rating">
-            <option value="rating-highest">Highest first</option>
-            <option value="rating-lowest">Lowest first</option>
-          </optgroup>
-        </select>
+        <section class="footer__site-map item2">
+          <h2 class="footer__item big">Site map</h2>
+          <ul class="footer__list">
+            <li class="footer__item">The Story</li>
+            <li class="footer__item">Contact Us</li>
+            <li class="footer__item">Legal</li>
+            <a class="about_link" href="/EscapeRoom-grupp2/about.html">
+              <li class="footer__item">About</li>
+            </a>
+          </ul>
+          <ul class="footer__list">
+            <li class="footer__item">Play online</li>
+            <li class="footer__item">Play on-site</li>
+          </ul>
+        </section>
 
-        <ol class="challenges__list"></ol>
-      </article>
-
-      <div class="main__btns">
-        <ul class="main__btns-list">
-          <li class="main__btns-item">
-            <a href="#onsite-challenges" class="main__btn onsite"
-              >On-site challenges</a
-            >
-          </li>
-          <li class="main__btns-item">
-            <a href="#onsite-challenges" class="main__btn online"
-              >Online challenges</a
-            >
-          </li>
-        </ul>
+        <section class="footer__social item3">
+          <h2 class="footer__item big">Follow us on</h2>
+          <ul class="footer__list">
+            <li class="footer__item">Facebook</li>
+            <li class="footer__item">Twitter</li>
+            <li class="footer__item">Instagram</li>
+          </ul>
+        </section>
       </div>
+    </footer>
+  </main>
+</body>
 
-      <!--*************************************************** Modal******************************************************-->
-
-      <!-- <dialog class="booking-modal">  -->
-      <div class="booking-modal" id="booking-modal">
-        <div class="booking-modal__content">
-          <!-- Step 1: Select Date -->
-          <div
-            class="booking-modal__step booking-modal__step--active"
-            id="step1"
-          >
-            <div class="modal" id="modal1">
-              <div class="modal__content">
-                <span class="close">&times;</span>
-                <!--added one inline-element in all 3span moments, for minimum needs to reset default modes as with buttons-->
-                <h1 class="modal__content-loading">
-                  'Loading Challenge information'
-                </h1>
-                <form class="booking__form" id="booking-form">
-                  <label for="booking-date" class="booking__date"
-                    >What date would you like to come?</label
-                  >
-                  <p class="booking__date-custom">date</p>
-                  <input
-                    type="date"
-                    class="custom__date"
-                    id="booking-date"
-                    name="booking-date"
-                    required
-                  />
-                  <button type="submit" class="booking__search-btn">
-                    Search available times
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Enter Details -->
-
-          <div class="booking-modal__step" id="step2">
-            <span class="close">&times;</span>
-            <h1 class="modal__content-loading">Loading...</h1>
-            <form class="user_booking" id="user-booking" method="post">
-              <!-- Name -->
-              <div class="user_booking_name">
-                <label for="booking-name" class="booking_name">Name</label>
-                <input
-                  type="name"
-                  class="custom_name"
-                  id="booking-name"
-                  name="user_name"
-                  required
-                />
-              </div>
-              <!-- Email -->
-              <div class="user_booking_email">
-                <label for="booking-email" class="booking_email">E-mail</label>
-                <input
-                  type="email"
-                  class="custom_email"
-                  id="booking-email"
-                  name="user_email"
-                  required
-                />
-              </div>
-              <!-- Times -->
-              <div class="user_booking_time">
-                <label for="booking-time" class="booking_time"
-                  >What time?</label
-                >
-                <select
-                  id="booking-time"
-                  name="selected_time"
-                  class="custom_time"
-                  required
-                >
-                  <!-- placeholder times -->
-                  <option value="">Select Time</option>
-                </select>
-              </div>
-              <!-- participants -->
-              <div class="user_booking_participants">
-                <label for="booking-participants" class="booking_participants"
-                  >How many participants?</label
-                >
-                <select
-                  id="booking-participants"
-                  name="selected_participants"
-                  class="custom_participants"
-                  required
-                >
-                  <!-- placeholder participants -->
-                  <option value="">Select Participants</option>
-                </select>
-              </div>
-              <!-- submit booking button -->
-              <button type="submit" class="submit_booking_btn">
-                submit booking
-              </button>
-            </form>
-          </div>
-
-          <!-- Step 3: Confirmation -->
-          <div class="booking-modal__step" id="step3">
-            <div class="modal" id="modal3">
-              <div class="modal__content">
-                <span class="close">&times;</span>
-                <h1>Thank you!</h1>
-                <a href="index.html">Back to challenges</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- </dialog> -->
-
-      <!--*************************************************** FOOTER ******************************************************-->
-      <footer class="footer">
-        <div class="footer__content">
-          <section class="footer__about item1">
-            <h2 class="footer__title">[Esc] Hacker Escape Rooms</h2>
-            <p class="footer__text">
-              Quodsi haberent magnalia inter potentiam et divitias, et non illam
-              quidem haec eo spectant haec quoque vos omnino desit illud quo
-              solo felicitatis libertatisque perficiuntur.
-            </p>
-          </section>
-          <section class="footer__site-map item2">
-            <h2 class="footer__item big">Site map</h2>
-            <ul class="footer__list">
-              <li class="footer__item">The Story</li>
-              <li class="footer__item">Contact Us</li>
-              <li class="footer__item">Legal</li>
-              <a class="about_link" href="/EscapeRoom-grupp2/about.html"><li class="footer__item">About</li></a>
-            </ul>
-            <ul class="footer__list">
-              <li class="footer__item">Play online</li>
-              <li class="footer__item">Play on-site</li>
-            </ul>
-          </section>
-
-          <section class="footer__social item3">
-            <h2 class="footer__item big">Follow us on</h2>
-            <ul class="footer__list">
-              <li class="footer__item">Facebook</li>
-              <li class="footer__item">Twitter</li>
-              <li class="footer__item">Instagram</li>
-            </ul>
-          </section>
-        </div>
-      </footer>
-    </main>
-  </body>
 </html>
