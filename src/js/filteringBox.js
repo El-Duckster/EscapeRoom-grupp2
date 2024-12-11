@@ -25,9 +25,12 @@ let ratingStars = {
     highestRating: 5,
 }
 
+// Sorting
 let sortVal; 
 
-// Sorting query
+// TagSwitchState
+let currentTagSwitchState = "OR";
+
 const sortSelection = document.querySelector(".sorting-selection");
 sortSelection.addEventListener("change", (e) => executeSearch(searchField ? searchField.value : "", e), false);
 
@@ -62,6 +65,11 @@ function openFilterModal() {
     const centerDiv = document.createElement("div");
     filterBox.appendChild(centerDiv);
     centerDiv.classList.add("filter__box__centerDiv");
+
+    // Bottom div
+    const bottomDiv = document.createElement("div");
+    filterBox.appendChild(bottomDiv);
+    bottomDiv.classList.add("filter__box__bottomDiv");
 
     // Checkbox main div
     const checkDiv = document.createElement("div");
@@ -138,22 +146,25 @@ function openFilterModal() {
 
     // Search field divs
     const searchDivMain = document.createElement("div");
-    filterBox.appendChild(searchDivMain);
-    searchDivMain.classList.add("filter__box__searchDivMain");
+    bottomDiv.appendChild(searchDivMain);
+    searchDivMain.classList.add("filter__box__bottomDiv__searchDivMain");
 
     // Search field
     const searchFieldTitle = document.createElement("h4");
     searchFieldTitle.textContent = "Or type to search for keywords";
     searchDivMain.appendChild(searchFieldTitle);
-    searchFieldTitle.classList.add("filter__box__searchDivMain__title");
+    searchFieldTitle.classList.add("filter__box__bottomDiv__searchDivMain__title");
 
     const searchField = document.createElement("input");
     searchField.type = "search";
     searchField.id = "searchField-input";
     searchField.placeholder = "Start typing to filter";
     searchDivMain.appendChild(searchField);
-    searchField.classList.add("filter__box__searchDivMain__searchfield");
+    searchField.classList.add("filter__box__bottomDiv__searchDivMain__searchfield");
     searchField.addEventListener("input", debounceSearch);
+
+    // Tag switch
+    createTagSwitch();
 
 }
 
@@ -396,37 +407,43 @@ function executeSearch(query, sortAttribute) {
         const matchesType = 
             (onlineChecked && challenge.type.toLowerCase() === "online") ||
             (onsiteChecked && challenge.type.toLowerCase() === "onsite");
-        const matchesTag =  
-            activeTags.every(tag => challenge.labels.some(label => label.toLowerCase() === tag.toLowerCase()));
-                return matchesQuery && matchesType && matchesTag && matchesRating;
 
-            });
+        let matchesTag
+
+        if (currentTagSwitchState === "AND") {
+            matchesTag = activeTags.every(tag => challenge.labels.some(label => label.toLowerCase() === tag.toLowerCase()));
+        } else {
+            matchesTag = activeTags.length === 0 || activeTags.some(tag => challenge.labels.some(label => label.toLowerCase() === tag.toLowerCase()));
+        }
+                
+        return matchesQuery && matchesType && matchesTag && matchesRating;
+
+    });
 
             // updateDynamicTags(filteredResults);
 
-            if (sortAttribute) {
-                sortVal = sortAttribute
+    if (sortAttribute) {
+        sortVal = sortAttribute
+    }
+
+    if (sortVal) {
+        filteredResults.sort((a, b) => {
+            switch (sortVal.target.value) {
+                case "name":
+                    return a.title.localeCompare(b.title); 
+                case "name-reverse":
+                    return b.title.localeCompare(a.title); 
+                case "rating-lowest":
+                    return a.rating - b.rating;
+                case "rating-highest":
+                    return b.rating - a.rating;
+                default:
+                    break
             }
+        });
+    }
 
-            if (sortVal) {
-                filteredResults.sort((a, b) => {
-                    switch (sortVal.target.value) {
-                        case "name":
-                            return a.title.localeCompare(b.title); 
-                        case "name-reverse":
-                            return b.title.localeCompare(a.title); 
-                        case "rating-lowest":
-                            return a.rating - b.rating;
-                        case "rating-highest":
-                            return b.rating - a.rating;
-                        default:
-                            break
-                    }
-                });
-            }
-
-            displaySearchResults(filteredResults);
-
+    displaySearchResults(filteredResults);
 }
  
 // Prints filteredResults in DOM-element
@@ -473,4 +490,49 @@ function filterChallengesByType(type) {
     const challengesListElement = document.querySelector(".challenges__list");
     renderChallenges(filteredChallenges, challengesListElement);
 
+}
+
+function createTagSwitch() {
+    const bottomDiv = document.querySelector(".filter__box__bottomDiv");
+
+    // tagSwitch Div
+    const tagSwitchDiv = document.createElement("div");
+    tagSwitchDiv.classList.add("filter__box__bottomDiv__tagSwitchDiv");
+    bottomDiv.appendChild(tagSwitchDiv);
+
+    // switch title
+    const switchTitle = document.createElement("h4");
+    switchTitle.textContent = "Match Any Tag’/'Combine Any Tags";
+    tagSwitchDiv.appendChild(switchTitle);
+    switchTitle.classList.add("filter__box__bottomDiv__tagSwitchDiv__title");
+
+    // switch label
+    const tagLabel = document.createElement("label");
+    tagLabel.classList.add("filter__box__bottomDiv__tagSwitchDiv__label");
+    tagSwitchDiv.appendChild(tagLabel);
+
+    // switch input/checkbox
+    const tagInput = document.createElement("input");
+    tagInput.type = "checkbox";
+    tagInput.classList.add("filter__box__bottomDiv__tagSwitchDiv__input");
+    tagLabel.appendChild(tagInput);
+    tagInput.addEventListener("change", handleTagSwitchState, false);
+
+    // switch span
+    const tagSwitch = document.createElement("span");
+    tagSwitch.classList.add("filter__box__bottomDiv__tagSwitchDiv__switch");
+    tagSwitch.classList.add("round");
+    tagLabel.appendChild(tagSwitch);
+}
+
+function handleTagSwitchState(e) {
+    let value = e.target.checked;
+
+    if (value) {
+        currentTagSwitchState = "AND";
+    } else {
+        currentTagSwitchState = "OR";
+    }
+
+    executeSearch(searchField ? searchField.value : "");
 }
