@@ -1,2 +1,0 @@
-import"./menu-BIv-Fo41.js";import{f as o,r as i}from"./renderChallenges-BQDNUyFF.js";const e=document.querySelector(".challenges__list");let l=[];const g=async()=>{const{success:s,data:a,error:r}=await o();if(!s){console.error("Failed to fetch challenges:",r),e.innerHTML="<li>Error loading challenges. Please try again later.</li>";return}l=a;const n=[...l].sort((t,c)=>c.rating-t.rating).slice(0,3);i(n,e)};g();
-//# sourceMappingURL=main-gHVUjpjH.js.map
