@@ -29,7 +29,8 @@ jobs:
       - name: Build Project
         run: |
           npm install
-          npm run build  # Сборка вашего проекта
+          npm run build
+          npm run gh-pages -d dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
