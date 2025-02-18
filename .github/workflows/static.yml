@@ -29,7 +29,11 @@ jobs:
       - name: Build Project
         run: |
           npm install
-          npm run build  # Сборка вашего проекта
+          npm run build
+        # Step to deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        run: |
+          npm run deploy
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
