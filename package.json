@@ -25,6 +25,7 @@
     },
     "keywords": [],
     "dependencies": {
+        "cypress": "^14.2.0",
         "vite-plugin-sass": "^0.1.0"
     }
 }

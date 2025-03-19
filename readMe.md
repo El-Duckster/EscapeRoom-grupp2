@@ -1,7 +1,8 @@
 # Hur planerar ni att dela upp arbetet?
 Uppgiften består av 3 moment. Vi är 2 personer/moment och delar upp arbetet i momenten. 
 
-Moment 1: Ladda challenge-data från API ) Elena & Kirill
+Moment 1: Ladda challe
+nge-data från API ) Elena & Kirill
 Moment 2: Filtrera challenges ) Dennis & Magnus
 Moment 3: Boka challenge ) Ronja & Linnea
 
@@ -17,3 +18,5 @@ Vi kommunicerar via pull requests, GitHub Project Board, röstchatt och chattgru
 
 # Vems befintliga kod ska ni utgå ifrån?
 Elena 
+
+testkommando: npx cypress run --spec cypress/e2e/home.cy.js
